@@ -60,7 +60,7 @@
  */
 - (void)QQShare:(UIButton *)sender {
     _oauth = [[TencentOAuth alloc] initWithAppId:@"1106248070" andDelegate:self];
-    QQApiURLObject *urlObject = [QQApiURLObject objectWithURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id533655318?mt=8"] title:@"团组发票管理" description:@"很好用的哟我开发的哟哈哈哈哈" previewImageData:UIImageJPEGRepresentation([UIImage imageNamed:@"test"], 1) targetContentType:QQApiURLTargetTypeNews];
+    QQApiURLObject *urlObject = [QQApiURLObject objectWithURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id1223932262?mt=8"] title:@"团组发票管理" description:@"很好用的哟我开发的哟哈哈哈哈" previewImageData:UIImageJPEGRepresentation([UIImage imageNamed:@"test"], 1) targetContentType:QQApiURLTargetTypeNews];
     SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:urlObject];
     [QQApiInterface sendReq:req];
 }
@@ -87,8 +87,11 @@
     [QQApiInterface SendReqToQZone:req];
 }
 
+
+/**
+ 登录成功
+ */
 - (void)tencentDidLogin {
-    NSLog(@"登录chenggong");
     NSLog(@"%@",_oauth.accessToken);
     [_oauth getUserInfo];
 }
@@ -112,7 +115,7 @@
  *          错误返回示例: \snippet example/addShareResponse.exp fail
  */
 - (void)addShareResponse:(APIResponse*) response {
-    
+    NSLog(@"%@",response);
 }
 
 @end
